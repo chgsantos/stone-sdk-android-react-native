@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "Beba Example",
+    "slug": "cashless-example",
+    "owner": "cashless-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#fef300"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 10000
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "br.com.sys10.cashless.example",
+      "icon": "./assets/icon.png"
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#000000",
+      "translucent": false
+    },
+    "packagerOpts": {
+      "config": "metro.config.js",
+      "sourceExts": [
+        "expo.ts",
+        "expo.tsx",
+        "expo.js",
+        "expo.jsx",
+        "ts",
+        "tsx",
+        "js",
+        "jsx",
+        "json",
+        "wasm",
+        "svg"
+      ]
+    },
+  }
+}

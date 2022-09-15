@@ -1,0 +1,51 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext {
+        buildToolsVersion = "29.0.3"
+        minSdkVersion = 22
+        compileSdkVersion = 30
+        targetSdkVersion = 30
+
+        stone_sdk_version = '4.3.11'
+
+        localProp = new Properties()
+        fileName = 'local.properties'
+        if (project.rootProject.file(fileName).exists()) {
+            localProp.load(new FileInputStream(rootProject.file(fileName)))
+        }
+        packageCloudReadToken = System.env.PACKAGECLOUD_READ_TOKEN != null ? System.env.PACKAGECLOUD_READ_TOKEN  : localProp["packageCloudReadToken"] ?: ""
+    }
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle:4.1.0")
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        maven {
+            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+            url(new File(["node", "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim(), "../android"))
+        }
+        maven {
+            // Android JSC is installed from npm
+            url(new File(["node", "--print", "require.resolve('jsc-android/package.json')"].execute(null, rootDir).text.trim(), "../dist"))
+        }
+
+        google()
+        mavenCentral()
+        jcenter()
+        maven { url 'https://www.jitpack.io' }
+        maven { url "https://packagecloud.io/priv/${packageCloudReadToken}/stone/pos-android/maven2" }
+    }
+}

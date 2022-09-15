@@ -1,0 +1,88 @@
+{
+  "name": "Beba Example",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "cross-env ENV=DEV react-native start",
+    "android": "react-native run-android --variant developmentDebug --appId br.com.sys10.cashless.example.dev",
+    "eject": "expo eject",
+    "prepare": "husky install",
+    "lint": "eslint src/**/*.{ts,tsx}",
+    "fix-eslint": "eslint --fix src/**/*.{ts,tsx} App.tsx",
+    "prettier-format": "prettier --config .prettierrc src/**/*.{ts,tsx} --write",
+    "prettier-check-formatting": "prettier --check src/**/*.{ts,tsx}",
+    "build-develop": "cross-env ENV=DEV eas build -p android --local --profile development",
+    "build-preview": "cross-env ENV=DEV eas build -p android --local --profile preview",
+    "build-prod": "cross-env ENV=PROD eas build -p android --local --profile production",
+    "publish-prod": "cross-env ENV=PROD expo publish --release-channel prod",
+    "publish-develop": "cross-env ENV=DEV expo publish --release-channel default"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "npm run prettier-format",
+      "npm run fix-eslint",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run lint"
+    }
+  },
+  "dependencies": {
+    "@expo/config": "^6.0.26",
+    "@expo/vector-icons": "^12.0.0",
+    "@react-navigation/bottom-tabs": "^6.3.2",
+    "@react-navigation/native": "^6.0.10",
+    "@react-navigation/native-stack": "^6.6.2",
+    "@types/styled-components": "^5.1.25",
+    "dotenv": "^16.0.1",
+    "eas-cli": "^0.58.0",
+    "expo": "^44.0.0",
+    "expo-asset": "~8.4.6",
+    "expo-cli": "^6.0.1",
+    "expo-constants": "~13.0.1",
+    "expo-font": "~10.0.4",
+    "expo-linking": "~3.0.0",
+    "expo-splash-screen": "~0.14.1",
+    "expo-status-bar": "~1.2.0",
+    "expo-updates": "~0.11.7",
+    "moment": "^2.29.4",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-native": "0.64.3",
+    "react-native-paper": "^4.12.2",
+    "react-native-safe-area-context": "3.3.2",
+    "react-native-screens": "~3.10.1",
+    "react-native-svg": "12.1.1",
+    "react-native-vector-icons": "^9.2.0",
+    "react-native-web": "0.17.1",
+    "styled-components": "^5.3.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@react-native-community/eslint-config": "^3.0.3",
+    "@types/lodash": "^4.14.182",
+    "@types/react": "~17.0.21",
+    "@types/react-native": "~0.64.12",
+    "@typescript-eslint/eslint-plugin": "^5.30.0",
+    "@typescript-eslint/parser": "^5.30.0",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.18.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.2.5",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.0",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-native": "^4.0.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "react-native-svg-transformer": "^1.0.0",
+    "typescript": "~4.3.5"
+  },
+  "private": true
+}
